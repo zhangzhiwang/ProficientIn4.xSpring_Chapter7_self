@@ -26,4 +26,14 @@ public class ServiceImpl {
 		}
 		Statics.end(start);
 	}
+	
+	public void met3() {
+		// 最高级的方法就是将所有的与业务逻辑没有关系的横切代码全部去掉，用AOP织入进来
+		try {
+			System.out.println("met3执行业务逻辑");
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
