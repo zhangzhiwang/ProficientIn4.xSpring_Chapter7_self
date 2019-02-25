@@ -13,4 +13,17 @@
        http://www.asiainfo.com/schema/service.xsd
        ">
 
+	<context:component-scan base-package="com.asiainfo"></context:component-scan>
+	
+<!-- 	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean" p:proxyInterfaces="com.asiainfo.IWaiter" p:target-ref="waiterImpl" p:proxyTargetClass="true"> -->
+	<bean id="waiter" scope="singleton" class="org.springframework.aop.framework.ProxyFactoryBean" p:proxyInterfaces="com.asiainfo.GreetSwitch" p:target-ref="waiterImpl" p:proxyTargetClass="true">  <!-- 注：这里的proxyInterfaces所指的接口不是目标类所实现的接口，而是引介增强所要实现的接口 -->
+		<property name="interceptorNames">
+			<list>
+<!-- 				<value>myThrowableAdvice</value> -->
+<!-- 				<value>greetBeforeAdvice</value> -->
+<!-- 				<value>greetAroundInterceptor</value> -->
+				<value>myIntroductionInterceptor</value>
+			</list>
+		</property>
+	</bean>
 </beans>

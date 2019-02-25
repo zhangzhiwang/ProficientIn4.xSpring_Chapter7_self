@@ -3,6 +3,7 @@ package com.asiainfo;
 import java.lang.reflect.Method;
 
 import org.springframework.aop.MethodBeforeAdvice;
+import org.springframework.stereotype.Component;
 
 /**
  * 打招呼的前置增强
@@ -10,6 +11,7 @@ import org.springframework.aop.MethodBeforeAdvice;
  * @author zhangzhiwang
  * @date 2019年2月22日 下午3:27:04
  */
+@Component
 public class GreetBeforeAdvice implements MethodBeforeAdvice {
 
 	@Override
