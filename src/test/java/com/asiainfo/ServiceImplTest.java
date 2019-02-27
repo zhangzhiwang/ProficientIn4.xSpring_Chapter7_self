@@ -52,15 +52,26 @@ public class ServiceImplTest {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-		Object bean = applicationContext.getBean("service");
+		Object bean = applicationContext.getBean("userService");
 		System.out.println(bean.getClass());// 可以看到引介增强使用cglib代理实现的
 		System.out.println(bean.getClass().getSuperclass()); // 可以看到引介增强创建的是目标类的子类（代理类）的实例
 		System.out.println(bean.getClass().getInterfaces()[0]);// 可以看到子类实现类父类并没有实现的接口
 //		WaiterImpl waiterImpl = (WaiterImpl) bean;
-		ServiceImpl waiterImpl = (ServiceImpl) bean;
-		waiterImpl.serve2("zzw");
+		UserServiceImpl o = (UserServiceImpl) bean;
+		Controller controller = new Controller();
+		controller.setUserServiceImpl(o);
+//		waiterImpl.serve2("ccc");
+//		System.out.println("----------------");
+//		waiterImpl.serve1("ccc");
+//		System.out.println("----------------");
+//		waiterImpl.serve2("aaa");
+//		System.out.println("----------------");
+//		waiterImpl.serve1("aaa");
+//		System.out.println("----------------");
+//		waiterImpl.serve1("aaa");
+		controller.getUserCon("aaa");
 		
-		System.out.println("----------------");
+//		System.out.println("----------------");
 //		GreetSwitch myIntroductionInterceptor = (GreetSwitch) waiterImpl;
 //		myIntroductionInterceptor.setGreetingActive(true);
 //		waiterImpl.serve1("zzw");

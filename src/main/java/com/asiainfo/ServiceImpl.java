@@ -40,7 +40,7 @@ public class ServiceImpl {
 		}
 	}
 	
-	public void serve2(String name) {
+	public void serve2(String name, int i) {
 		System.out.println("ServiceImpl#serve2()");
 	}
 }

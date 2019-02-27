@@ -40,11 +40,52 @@
 <!-- 	<bean id="service" parent="common" p:target-ref="serviceImpl"></bean> -->
 
 	<!-- 动态切面 -->
-	<bean id=""></bean>
+<!-- 	<bean id="defaultPointcutAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" p:pointcut-ref="myDynamicPointcut" p:advice-ref="greetBeforeAdvice"></bean> -->
+<!-- 	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean" p:target-ref="serviceImpl" p:optimize="true"> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>defaultPointcutAdvisor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="waiterImpl" class="com.asiainfo.WaiterImpl"></bean> -->
+<!-- 	<bean id="serviceImpl" class="com.asiainfo.ServiceImpl"></bean> -->
 
+	<!-- 流程切面 -->
+<!-- 	<bean id="controlFlowPointcut" class="org.springframework.aop.support.ControlFlowPointcut"> -->
+<!-- 		<constructor-arg type="java.lang.Class" value="com.asiainfo.Controller"></constructor-arg> -->
+<!-- 		<constructor-arg type="java.lang.String" value="getUserCon"></constructor-arg> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="defaultPointcutAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" p:pointcut-ref="controlFlowPointcut" p:advice-ref="greetBeforeAdvice"></bean> -->
+<!-- 	<bean id="userServiceImpl" class="com.asiainfo.UserServiceImpl"></bean> -->
+<!-- 	<bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean" p:target-ref="userServiceImpl" p:optimize="true"> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>defaultPointcutAdvisor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 
-
-
-
+	<!-- 复合切点切面 -->
+	<bean id="myComposablePointcut" class="com.asiainfo.MyComposablePointcut"></bean>
+	<bean id="defaultPointcutAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" p:pointcut="#{myComposablePointcut.pointcut}" p:advice-ref="greetBeforeAdvice"></bean>
+	<bean id="userServiceImpl" class="com.asiainfo.UserServiceImpl"></bean>
+	<bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean" p:target-ref="userServiceImpl" p:optimize="true">
+		<property name="interceptorNames">
+			<list>
+				<value>defaultPointcutAdvisor</value>
+			</list>
+		</property>
+	</bean>
+<!-- 	<bean id="myPointcutAdvisor" class="com.asiainfo.MyPointcutAdvisor" p:advice-ref="greetBeforeAdvice"></bean> -->
+<!-- 	<bean id="common" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true" p:proxyTargetClass="true"> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>myPointcutAdvisor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="waiter" parent="common" p:target-ref="waiterImpl"></bean> -->
+<!-- 	<bean id="service" parent="common" p:target-ref="serviceImpl"></bean> -->
 
 </beans>

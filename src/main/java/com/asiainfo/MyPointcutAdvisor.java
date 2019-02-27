@@ -14,6 +14,6 @@ import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
 public class MyPointcutAdvisor extends StaticMethodMatcherPointcutAdvisor {
 	@Override
 	public boolean matches(Method paramMethod, Class<?> paramClass) {// 方法匹配，相当于切点中的方法匹配器，实现的是方法匹配器的matches方法
-		return "serve2".equals(paramMethod.getName());// 只匹配方法名为serve1的方法
+		return "getUser".equals(paramMethod.getName());// 只匹配方法名为serve1的方法
 	}
 }
