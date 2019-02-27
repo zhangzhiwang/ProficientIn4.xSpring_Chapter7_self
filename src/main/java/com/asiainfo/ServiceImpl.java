@@ -1,5 +1,8 @@
 package com.asiainfo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ServiceImpl {
 	public void met1() {
 		// 最原始的方式。将一些和业务逻辑完全无关的统计信息耦合在业务代码里面
@@ -35,5 +38,9 @@ public class ServiceImpl {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void serve2(String name) {
+		System.out.println("ServiceImpl#serve2()");
 	}
 }
