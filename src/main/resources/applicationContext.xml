@@ -15,6 +15,7 @@
 
 	<context:component-scan base-package="com.asiainfo"></context:component-scan>
 	
+	<!-- 静态普通方法名匹配切面 -->
 <!-- 	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean" p:proxyInterfaces="com.asiainfo.IWaiter" p:target-ref="waiterImpl" p:proxyTargetClass="true"> -->
 <!-- 	<bean id="waiter" scope="singleton" class="org.springframework.aop.framework.ProxyFactoryBean" p:proxyInterfaces="com.asiainfo.GreetSwitch" p:target-ref="waiterImpl" p:proxyTargetClass="true">  注：这里的proxyInterfaces所指的接口不是目标类所实现的接口，而是引介增强所要实现的接口 -->
 <!-- 		<property name="interceptorNames"> -->
@@ -27,19 +28,19 @@
 <!-- 		</property> -->
 <!-- 	</bean> -->
 
-	<bean id="myPointcutAdvisor" class="com.asiainfo.MyPointcutAdvisor" p:advice-ref="greetBeforeAdvice"></bean>
-	<bean id="common" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true" p:proxyTargetClass="true">
-		<property name="interceptorNames">
-			<list>
-				<value>myPointcutAdvisor</value>
-			</list>
-		</property>
-	</bean>
-	<bean id="waiter" parent="common" p:target-ref="waiterImpl"></bean>
-	<bean id="service" parent="common" p:target-ref="serviceImpl"></bean>
+<!-- 	<bean id="myPointcutAdvisor" class="com.asiainfo.MyPointcutAdvisor" p:advice-ref="greetBeforeAdvice"></bean> -->
+<!-- 	<bean id="common" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true" p:proxyTargetClass="true"> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>myPointcutAdvisor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="waiter" parent="common" p:target-ref="waiterImpl"></bean> -->
+<!-- 	<bean id="service" parent="common" p:target-ref="serviceImpl"></bean> -->
 
-
-
+	<!-- 动态切面 -->
+	<bean id=""></bean>
 
 
 

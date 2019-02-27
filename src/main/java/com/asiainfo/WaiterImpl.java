@@ -16,5 +16,9 @@ public class WaiterImpl implements IWaiter {
 		System.out.println("serve2逻辑");
 //		throw new RuntimeException("serve2的异常");
 	}
+	
+	public void met2(String name) {
+		System.out.println("met2逻辑");
+	}
 
 }
