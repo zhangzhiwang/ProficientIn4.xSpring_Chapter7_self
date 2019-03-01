@@ -51,29 +51,25 @@ public class ServiceImplTest {
 	}
 	
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-		Object bean = applicationContext.getBean("userService");
-		System.out.println(bean.getClass());// 可以看到引介增强使用cglib代理实现的
-		System.out.println(bean.getClass().getSuperclass()); // 可以看到引介增强创建的是目标类的子类（代理类）的实例
-		System.out.println(bean.getClass().getInterfaces()[0]);// 可以看到子类实现类父类并没有实现的接口
+//		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+//		Object bean = applicationContext.getBean("com.asiainfo.WaiterImpl");
+//		System.out.println(bean.getClass());// 可以看到引介增强使用cglib代理实现的
+//		System.out.println(bean.getClass().getSuperclass()); // 可以看到引介增强创建的是目标类的子类（代理类）的实例
+//		System.out.println(bean.getClass().getInterfaces()[0]);// 可以看到子类实现类父类并没有实现的接口
 //		WaiterImpl waiterImpl = (WaiterImpl) bean;
-		UserServiceImpl o = (UserServiceImpl) bean;
-		Controller controller = new Controller();
-		controller.setUserServiceImpl(o);
-//		waiterImpl.serve2("ccc");
-//		System.out.println("----------------");
-//		waiterImpl.serve1("ccc");
-//		System.out.println("----------------");
-//		waiterImpl.serve2("aaa");
-//		System.out.println("----------------");
-//		waiterImpl.serve1("aaa");
-//		System.out.println("----------------");
-//		waiterImpl.serve1("aaa");
-		controller.getUserCon("aaa");
+//		waiterImpl.serve2("zzw");
 		
-//		System.out.println("----------------");
-//		GreetSwitch myIntroductionInterceptor = (GreetSwitch) waiterImpl;
-//		myIntroductionInterceptor.setGreetingActive(true);
-//		waiterImpl.serve1("zzw");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+		Object bean = applicationContext.getBean("waiterImpl");
+		System.out.println(bean.getClass());
+		System.out.println(bean.getClass().getSuperclass());
+		WaiterImpl waiterImpl = (WaiterImpl) bean;
+		waiterImpl.serve2("zzw");
+		System.out.println("---------------");
+		
+		Object bean2 = applicationContext.getBean("serviceImpl");
+		System.out.println(bean2.getClass());
+		ServiceImpl s = (ServiceImpl) bean2;
+		s.serve2("zzw",1);
 	}
 }

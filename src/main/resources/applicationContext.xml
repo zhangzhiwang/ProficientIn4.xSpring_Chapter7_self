@@ -27,6 +27,22 @@
 <!-- 			</list> -->
 <!-- 		</property> -->
 <!-- 	</bean> -->
+	
+<!-- 	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean" p:target-ref="waiterImpl" p:proxyTargetClass="true"> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>regexAdvisor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="regexAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" p:advice-ref="greetBeforeAdvice"> -->
+<!-- 		<property name="patterns"> -->
+<!-- 			<list> -->
+<!-- 				<value>.*met.*</value> -->
+<!-- 				<value>myIntroductionInterceptor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 
 <!-- 	<bean id="myPointcutAdvisor" class="com.asiainfo.MyPointcutAdvisor" p:advice-ref="greetBeforeAdvice"></bean> -->
 <!-- 	<bean id="common" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true" p:proxyTargetClass="true"> -->
@@ -67,16 +83,17 @@
 <!-- 	</bean> -->
 
 	<!-- 复合切点切面 -->
-	<bean id="myComposablePointcut" class="com.asiainfo.MyComposablePointcut"></bean>
-	<bean id="defaultPointcutAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" p:pointcut="#{myComposablePointcut.pointcut}" p:advice-ref="greetBeforeAdvice"></bean>
-	<bean id="userServiceImpl" class="com.asiainfo.UserServiceImpl"></bean>
-	<bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean" p:target-ref="userServiceImpl" p:optimize="true">
-		<property name="interceptorNames">
-			<list>
-				<value>defaultPointcutAdvisor</value>
-			</list>
-		</property>
-	</bean>
+<!-- 	<bean id="myComposablePointcut" class="com.asiainfo.MyComposablePointcut"></bean> -->
+<!-- 	<bean id="defaultPointcutAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" p:pointcut="#{myComposablePointcut.pointcut}" p:advice-ref="greetBeforeAdvice"></bean> -->
+<!-- 	<bean id="userServiceImpl" class="com.asiainfo.UserServiceImpl"></bean> -->
+<!-- 	<bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean" p:target-ref="userServiceImpl" p:optimize="true"> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>defaultPointcutAdvisor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
 <!-- 	<bean id="myPointcutAdvisor" class="com.asiainfo.MyPointcutAdvisor" p:advice-ref="greetBeforeAdvice"></bean> -->
 <!-- 	<bean id="common" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true" p:proxyTargetClass="true"> -->
 <!-- 		<property name="interceptorNames"> -->
@@ -87,5 +104,51 @@
 <!-- 	</bean> -->
 <!-- 	<bean id="waiter" parent="common" p:target-ref="waiterImpl"></bean> -->
 <!-- 	<bean id="service" parent="common" p:target-ref="serviceImpl"></bean> -->
-
+<!-- 	<bean id="waiterImpl" class="com.asiainfo.WaiterImpl"></bean> -->
+<!-- 	<bean id="serviceImpl" class="com.asiainfo.ServiceImpl"></bean> -->
+	
+	<!-- 自动代理创建器 -->
+	<!-- BeanNameAutoProxyCreator -->
+<!-- 	<bean id="beanNameAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator" p:optimize="true"> -->
+<!-- 		<property name="beanNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>*Impl</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>myPointcutAdvisor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="myPointcutAdvisor" class="com.asiainfo.MyPointcutAdvisor" p:advice-ref="greetBeforeAdvice"></bean> -->
+<!-- 	<bean id="waiterImpl" class="com.asiainfo.WaiterImpl"></bean> -->
+<!-- 	<bean id="serviceImpl" class="com.asiainfo.ServiceImpl"></bean> -->
+	
+	<!-- DefaultAdvisorAutoProxyCreator -->
+	<bean id="myPointcutAdvisor" class="com.asiainfo.MyPointcutAdvisor" p:advice-ref="greetBeforeAdvice"></bean>
+	<bean id="waiterImpl" class="com.asiainfo.WaiterImpl"></bean>
+	<bean id="serviceImpl" class="com.asiainfo.ServiceImpl"></bean>
+	<bean  class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </beans>
